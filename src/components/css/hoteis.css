@@ -1,0 +1,552 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fidena', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+html {
+    font-size: 62.5%;
+    background: #eeeeee;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #FFBD59, #FFBD59);
+    border-radius: 7px;
+}
+
+::placeholder {
+    font-family: 'Fidena', sans-serif;
+}
+
+input[type="checkbox"] {
+    background: #000;
+}
+
+
+
+
+/* Header */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    position: fixed;
+    top: 0;
+    height: 70px;
+    width: 100%;
+
+    background: transparent;
+    z-index: 5;
+}
+
+header .container-h {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    background: #FFF;
+    box-shadow: 0 1px 15px #D5D5D5;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    width: 70%;
+}
+
+.logo-hotel-manaus {
+    width: 190px;
+    height: 70px;
+    object-fit: cover;
+    object-position: 0 -58px;
+}
+
+.nav {
+    width: 450px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 14px;
+}
+
+.nav ul li {
+    letter-spacing: 2px;
+}
+
+.nav ul li a {
+    color: #444;
+    transition: ease .2s all;
+}
+
+.nav ul li:hover a {
+    color: #FF3131;
+}
+
+.nav ul li #idioma {
+    cursor: pointer;
+}
+
+#idioma {
+    border: none;
+    outline: none;
+}
+
+#idioma option {
+    padding: 50px;
+}
+
+/* Pesquisa de hotéis */
+
+.hotels-search {
+    height: 250px;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.container-hs {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+    top: 0;
+    
+    background: #fa3200;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+
+    padding: 15px;
+    width: 100%;
+    height: 80%;
+}
+
+.container-hs input {
+    font-size: 16px;
+    padding: 12px 28px 12px 12px;
+    border-radius: 5px;
+    border: 1px solid #CDCDCD;
+}
+
+.container-hs .campos {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 40px;
+    width: 75%;
+}
+
+.container-hs .destino {
+    width: 350px;
+    float: left;
+}
+
+.container-hs .room-pax {
+    float: left;
+    outline: none;
+    cursor: pointer;
+}
+
+#check-in, #check-out {
+    width: 275px;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container-hs .campos .bi-geo-alt,
+.container-hs .campos .bi-people {
+    font-size: 24px;
+    float: left;
+    margin: 5px 0px 0px -30px;
+}
+
+.container-hs .campos .periodo {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-hs .pesquisar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background: #FFF;
+    color: #fa3200;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+
+.list-hoteis {
+    display: flex;
+    justify-content: center;
+    margin-top: 30rem;
+    background: #eeeeee;
+}
+
+/* Filtro */
+.list-hoteis .filtros {
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.list-hoteis .filtros .top-filtro {
+    display: flex;
+    align-items: center;
+}
+
+.list-hoteis .filtros .top-filtro h2 {
+    margin-right: 2rem;
+}
+
+.list-hoteis .filtros .body-filtro {
+    margin-top: 2rem;
+}
+
+.list-hoteis .filtros .body-filtro .preco {
+    margin-top: 2rem;
+}
+
+
+
+/* Hotéis */
+
+.list-hoteis .hoteis {
+    width: 65%;
+}
+
+.container-hoteis .top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    margin-bottom: 50px;
+}
+
+
+.recomendacao {
+    background: #ff5a31;
+    padding: 15px 100px;
+    border-radius: 15px;
+    color: #FFF;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: .5s ease;
+    text-align: center;
+}
+
+.menor-preco {
+    background: #38b6ff;
+    padding: 15px 100px;
+    border-radius: 15px;
+    color: #000;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .5s ease;
+    text-align: center;
+}
+
+.recomendacao:hover,
+.menor-preco:hover {
+    box-shadow: 0 7px 25px rgba(0, 0, 0, .2);
+}
+
+/* Lista */
+
+.lista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lista .hotel-1 {
+    display: flex;
+    width: 70%;
+    height: 300px;
+
+    font-size: 20px;
+    letter-spacing: 2px;
+
+    background: #FFF;
+    box-shadow: 0 7px 15px rgba(0, 0, 0, .2);
+    border-radius: 15px;
+
+    margin-bottom: 5rem;
+}
+
+.lista .hotel-1 .foto {
+    width: 45%;
+    height: 100%;
+    background-image: url(../imgs/hotel-rj/quarto-1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.lista .hotel-1 .informacoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.lista .hotel-1 .informacoes .info-top {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.lista .hotel-1 .informacoes .info-top .info-detalhes {
+    line-height: 40px;
+}
+
+.lista .hotel-1 .informacoes .info-top .info-detalhes .avaliacao {
+    line-height: 20px;
+}
+
+.lista .hotel-1 .informacoes .info-top .precos {
+    text-align: center;
+}
+
+.lista .hotel-1 .informacoes .info-top h5 {
+    color: #444;
+}
+
+.lista .hotel-1 .informacoes .info-top h6 {
+    color: #888;
+}
+
+.lista .hotel-1 .informacoes .info-bottom {
+    text-align: center;
+
+    background: #000;
+    color: #FFF;
+    font-size: 17.9px;
+}
+
+
+
+
+
+
+/* Sessão Newsletter */
+
+.newsletter {
+    background: linear-gradient(to right, #FF3131, #ff5a31);
+    padding: 50px;
+    margin-top: 70px;
+}
+
+.newsletter .container-n {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.newsletter .container-n .title-n h2 {
+    color: #FFF;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.newsletter .container-n .campos-n {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 40%;
+    margin-top: 12px;
+}
+
+.newsletter .container-n .campos-n input {
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    letter-spacing: 2px;
+
+    outline: none;
+}
+
+.newsletter .container-n .campos-n input[type="text"] {
+    width: 300px;
+}
+
+.newsletter .container-n .campos-n .eu_quero {
+    background: #000;
+    color: #FFF;
+
+    cursor: pointer;
+}
+
+
+
+/* Footer */
+
+.container-f {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 30px;
+}
+
+.container-f .top-f {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.container-f .top-f .logo-f img {
+    width: 390px;
+    height: 182px;
+    object-fit: cover;
+    object-position: 0 -95px;
+    margin-right: 30px;
+}
+
+.container-f .top-f .pax-info {
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #444;
+}
+
+.container-f .main-f {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #444;
+
+    padding: 51px;
+}
+
+
+/* Modal - Login */
+
+.modal-login {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .5);
+
+    display: none;
+}
+
+.container-ml {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    width: 45%;
+    height: 45%;
+    
+    background: #FFF;
+    background-image: url(../imgs/wave.svg);
+    background-position: 0 220px;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+}
+
+.container-ml .imagem-ml {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.container-ml .imagem-ml img {
+    object-fit: cover;
+}
+
+.container-ml h2 {
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.container-ml .campos-ml {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+}
+
+.container-ml .campos-ml input {
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, .3);
+    letter-spacing: 2px;
+    width: 350px;
+
+    margin-top: 10px;
+}
+
+.container-ml .campos-ml input:focus {
+    outline: 1px solid #FF3131;
+}
+
+.container-ml .campos-ml input:focus cursor {
+    color: #FF3131;
+}
+
+.container-ml .campos-ml .entrar {
+    background: #ff7654;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.container-ml .campos-ml .entrar:hover {
+    background: #fa3200;
+}
+
+.container-ml .campos-ml .novo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-top: 15px;
+}
+
+.container-ml .campos-ml .novo a {
+    color: #ff5a31;
+    margin-left: 15px;
+}
