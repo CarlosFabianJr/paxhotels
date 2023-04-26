@@ -17,7 +17,7 @@
     <form id="form_cadastro" name="form_cadastro" class="form_cadastro" method="post" action="">
         <div class="agrupamento_cadastro">
             <div class="voltar">
-                <a href="../../index.html">
+                <a href="../../index.php">
                     <i class="bi bi-arrow-left"></i>
                 </a>
             </div>

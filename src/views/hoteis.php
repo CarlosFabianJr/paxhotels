@@ -20,7 +20,7 @@
         <header>
             <div class="container-h">
                 <div class="logo" id="logo">
-                    <a href="../../index.html">
+                    <a href="../../index.php">
                         <img src="../../src/components/imgs/PAXhotels.svg" alt="Hotel Manaus" class="logo-hotel-manaus">
                     </a>
                 </div>
@@ -378,7 +378,7 @@
                         <h3>Não tem conta?</h3>
                     </div>
                     <div>
-                        <a href="../../src/views/cadastro.html">Cadastre-se</a>
+                        <a href="../../src/views/cadastro.php">Cadastre-se</a>
                     </div>
                 </div>
             </div>

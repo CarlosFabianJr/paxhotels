@@ -20,7 +20,7 @@
         <header>
             <div class="container-h">
                 <div class="logo" id="logo">
-                    <a href="./index.html">
+                    <a href="./index.php">
                         <img src="./src/components/imgs/PAXhotels.svg" alt="Hotel Manaus" class="logo-hotel-manaus">
                     </a>
                 </div>
@@ -97,7 +97,7 @@
 
         <section class="promocoes">
             <div class="container-p">
-                <a href="./src/views/hoteis.html">
+                <a href="./src/views/hoteis.php">
                     <div class="promo-1">
                         <div class="img"></div>
                         <div class="info">
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="./src/views/hoteis.html">
+                <a href="./src/views/hoteis.php">
                     <div class="promo-2">
                         <div class="img"></div>
                         <div class="info">
@@ -248,7 +248,7 @@
                         <h3>Não tem login?</h3>
                     </div>
                     <div>
-                        <a href="./src/views/cadastro.html">Cadastre-se</a>
+                        <a href="./src/views/cadastro.php">Cadastre-se</a>
                     </div>
                 </div>
             </div>
