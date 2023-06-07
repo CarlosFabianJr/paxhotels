@@ -2,12 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Fidena', sans-serif;
     text-decoration: none;
     list-style: none;
 }
 
 html {
+    font-family: 'Fidena', sans-serif;
     font-size: 62.5%;
     background: #eeeeee;
 }
@@ -86,16 +86,67 @@ header .container-h {
     font-size: 14px;
 }
 
+.modal-user {
+    position: absolute;
+    top: 6rem;
+    width: 147px;
+    left: 140.5rem;
+    /* padding: 30px; */
+    background: #FFF;
+    border: 1px solid #4e00cc;
+    border-radius: 15px;
+    display: none;
+}
+
+.modal-user div {
+    text-align: center;
+}
+
+.modal-user div:last-child {
+    margin-bottom: 0px;
+}
+
+
+.modal-user div div {
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.modal-user div div a {
+    font-size: 16px;
+    width: 70px;
+    border-radius: 5px;
+    border: none;
+    color: #444;
+    background: none;
+    letter-spacing: 2px;
+    text-align: center;
+    cursor: pointer;
+
+    transition: .5s ease;
+}
+
+.modal-user div div:hover {
+    background: #4e00cc !important;
+    color: #fff !important;
+}
+
+.modal-user div div:hover a {
+    color: #fff !important;
+}
+
 .nav ul li {
     letter-spacing: 2px;
 }
 
-.nav ul li a {
+.nav ul li a,
+.nav ul li select {
     color: #444;
     transition: ease .2s all;
 }
 
-.nav ul li:hover a {
+.nav ul li:hover a,
+.nav ul li:hover select {
     color: #FF3131;
 }
 
@@ -106,6 +157,7 @@ header .container-h {
 #idioma {
     border: none;
     outline: none;
+    font-family: 'Fidena', sans-serif;
 }
 
 #idioma option {
@@ -184,6 +236,33 @@ header .container-h {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.modal-rp {
+    position: absolute;
+    top: 15rem;
+    left: 120.5rem;
+    padding: 30px;
+    background: #FFF;
+    border: 1px solid #fa3200;
+    border-radius: 15px;
+    display: none;
+}
+
+.modal-rp input {
+    font-size: 16px;
+    padding: 12px 12px 12px 12px;
+    width: 70px;
+    border-radius: 5px;
+    border: 1px solid #CDCDCD;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.modal-rp label {
+    font-size: 20px;
+    letter-spacing: 2px;
 }
 
 .container-hs .pesquisar {
@@ -294,16 +373,26 @@ header .container-h {
     letter-spacing: 2px;
 
     background: #FFF;
-    box-shadow: 0 7px 15px rgba(0, 0, 0, .2);
     border-radius: 15px;
-
     margin-bottom: 5rem;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.lista .hotel-1 a {
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color: #000;
+}
+
+.lista .hotel-1:hover {
+    box-shadow: 0 7px 15px rgba(0, 0, 0, .2);
 }
 
 .lista .hotel-1 .foto {
-    width: 45%;
+    width: 30%;
     height: 100%;
-    background-image: url(../imgs/hotel-rj/quarto-1.png);
     background-size: cover;
     background-repeat: no-repeat;
     border-bottom-left-radius: 15px;
@@ -311,6 +400,7 @@ header .container-h {
 }
 
 .lista .hotel-1 .informacoes {
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -321,19 +411,38 @@ header .container-h {
 .lista .hotel-1 .informacoes .info-top {
     display: flex;
     align-items: center;
-    padding-left: 10px;
+    padding-left: 15px;
+    width: 100%;
+    height: 100%;
 }
 
 .lista .hotel-1 .informacoes .info-top .info-detalhes {
     line-height: 40px;
+    width: 70%;
 }
 
 .lista .hotel-1 .informacoes .info-top .info-detalhes .avaliacao {
     line-height: 20px;
+    margin: 7px 0;
+}
+
+.lista .hotel-1 .informacoes .info-top .info-detalhes .comodidades {
+    line-height: 25px;
 }
 
 .lista .hotel-1 .informacoes .info-top .precos {
     text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 30%;
+    height: 100%;
+    background: #444;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .lista .hotel-1 .informacoes .info-top h5 {
@@ -350,6 +459,7 @@ header .container-h {
     background: #000;
     color: #FFF;
     font-size: 17.9px;
+    border-bottom-right-radius: 15px;
 }
 
 
@@ -378,11 +488,12 @@ header .container-h {
     letter-spacing: 2px;
 }
 
+.newsletter .container-n form,
 .newsletter .container-n .campos-n {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    width: 40%;
+    width: 65%;
     margin-top: 12px;
 }
 

@@ -1,0 +1,540 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+html {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 62.5%;
+    background: #EEEEEE;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff5931;
+    border-radius: 7px;
+}
+
+::placeholder {
+    font-family: 'Fidena', sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    position: fixed;
+    top: 0;
+    height: 70px;
+    width: 100%;
+
+    background: transparent;
+    z-index: 5;
+}
+
+header .container-h {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    background: #FFF;
+    box-shadow: 0 1px 15px #D5D5D5;
+
+    width: 100%;
+}
+
+.logo-hotel-manaus {
+    width: 150px;
+    height: 70px;
+    object-fit: cover;
+    object-position: 0 -40px;
+}
+
+.nav {
+    width: 450px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 14px;
+}
+
+.modal-user {
+    position: absolute;
+    top: 6rem;
+    width: 147px;
+    left: 140.5rem;
+    /* padding: 30px; */
+    background: #FFF;
+    border: 1px solid #4e00cc;
+    border-radius: 15px;
+    display: none;
+}
+
+.modal-user div {
+    text-align: center;
+}
+
+.modal-user div:last-child {
+    margin-bottom: 0px;
+}
+
+
+.modal-user div div {
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.modal-user div div a {
+    font-size: 16px;
+    width: 70px;
+    border-radius: 5px;
+    border: none;
+    color: #444;
+    background: none;
+    letter-spacing: 2px;
+    text-align: center;
+    cursor: pointer;
+
+    transition: .5s ease;
+}
+
+.modal-user div div:hover {
+    background: #4e00cc !important;
+    color: #fff !important;
+}
+
+.modal-user div div:hover a {
+    color: #fff !important;
+}
+
+.nav ul li {
+    letter-spacing: 2px;
+    font-family: 'Fidena', sans-serif;
+}
+
+.nav ul li a,
+.nav ul li:hover select {
+    color: #444;
+    transition: ease .2s all;
+}
+
+.nav ul li select {
+    font-family: 'Fidena', sans-serif;
+}
+
+.nav ul li:hover a,
+.nav ul li:hover select {
+    color: #ff5931;
+}
+
+.nav ul li #idioma {
+    cursor: pointer;
+}
+
+#idioma {
+    border: none;
+    outline: none;
+}
+
+#idioma option {
+    padding: 50px;
+}
+
+.quarto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    margin-top: 10rem;
+}
+
+.quarto .container-q  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    padding: 15px;
+    background: #f6f6f6;
+    border-radius: 15px;
+}
+
+.quarto .container-q .top-q {
+    width: 100%;
+    height: 550px;
+}
+
+.quarto .container-q .top-q .imagem {
+    background-image: url(../../components/imgs/quarto/quarto-1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 -200px;
+    width: 100%;
+    height: 100%;
+}
+
+.quarto .container-q .bottom-q {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 30px;
+
+    width: 100%;
+    padding-top: 15px;
+}
+
+.quarto .container-q .bottom-q .preco-comodidades {
+    display: flex;
+}
+
+.quarto .container-q .bottom-q .preco {
+    font-size: 35px;
+    margin-top: 15px;
+}
+
+.quarto .container-q .bottom-q .preco h3 sup {
+    font-size: 25px;
+}
+
+.quarto .container-q .bottom-q .preco span sup {
+    font-size: 15px;
+}
+
+.quarto .container-q .bottom-q i {
+    color: #ff5931;
+}
+
+.quarto .container-q .bottom-q .comodidades {
+    display: flex;
+    align-items: center;
+    width: 550px;
+
+    margin-left: 12rem;
+}
+
+.quarto .container-q .bottom-q .comodidades div {
+    width: 200%;
+}
+
+.quarto .container-q .bottom-q .comodidades a {
+    background: #ff5931;
+    color: #fff;
+    border: 1px solid #ff5931;
+    padding: 7px 17px;
+    border-radius: 5px;
+    margin-left: 35rem;
+    transition: .5s ease;
+}
+
+.quarto .container-q .bottom-q .comodidades a:hover {
+    background: #F1F1F1;
+    color: #000;
+}
+
+.quarto .container-q .bottom-q .comodidades .comodidades-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Sessão Newsletter */
+
+.newsletter {
+    background: linear-gradient(to right, #ff5931, #4e00cc);
+    padding: 50px;
+    margin-top: 70px;
+}
+
+.newsletter .container-n {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.newsletter .container-n .title-n h2 {
+    color: #FFF;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.newsletter .container-n .campos-n {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 40%;
+    margin-top: 12px;
+}
+
+.newsletter .container-n .campos-n input {
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    letter-spacing: 2px;
+
+    outline: none;
+}
+
+.newsletter .container-n .campos-n input[type="text"] {
+    width: 300px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.newsletter .container-n .campos-n .eu_quero {
+    background: transparent;
+    border: 1px solid #FFF;
+    color: #FFF;
+
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.newsletter .container-n .campos-n .eu_quero:hover {
+    background: #000;
+    border: 1px solid #000;
+}
+
+/* Footer */
+
+.container-f {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 30px;
+}
+
+.container-f .top-f {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-f .top-f .logo-f img {
+    width: 390px;
+    height: 182px;
+    object-fit: cover;
+    object-position: 0 -95px;
+}
+
+.container-f .top-f .pax-info {
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #444;
+}
+
+.container-f .main-f {
+    margin-top: 1rem;
+}
+
+.container-f .main-f a {
+    font-size: 35px;
+    color: #444;
+    padding: 6px 12px;
+    transition: .9s ease;
+}
+
+.container-f .main-f a:hover {
+    color: #4e00cc;
+}
+
+.container-f .bottom-f {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #444;
+
+    padding: 51px;
+}
+
+
+/* Modal - Login */
+
+.modal-login {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .5);
+
+    display: none;
+}
+
+.container-ml {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    width: 45%;
+    height: 45%;
+    
+    background: #FFF;
+    border: 5px solid #4e00cc;
+    box-shadow: 0 7px 15px #4e00cc;
+    background-position: 0 220px;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+}
+
+.container-ml .imagem-ml {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.container-ml .imagem-ml img {
+    object-fit: cover;
+}
+
+.container-ml h2 {
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.container-ml .campos-ml {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+}
+
+.container-ml .campos-ml input {
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 12px;
+    border: 1px solid rgba(0, 0, 0, .3);
+    letter-spacing: 2px;
+    width: 350px;
+
+    margin-top: 10px;
+}
+
+.container-ml .campos-ml input:focus {
+    outline: 1px solid #ff5931;
+}
+
+.container-ml .campos-ml input:focus cursor {
+    color: #ff5931;
+}
+
+.container-ml .campos-ml .entrar {
+    background: #ff5931;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.container-ml .campos-ml .entrar:hover {
+    background: #4e00cc;
+}
+
+.container-ml .campos-ml .novo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-top: 15px;
+}
+
+.container-ml .campos-ml .novo a {
+    color: #ff5931;
+    margin-left: 15px;
+    transition: .5s ease;
+}
+
+.container-ml .campos-ml .novo a:hover {
+    color: #444;
+}
+
+.modal-construcao {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .5);
+
+    display: none;
+}
+
+.container-mc {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    width: 45%;
+    height: 45%;
+    
+    background: #FFF;
+    border: 5px solid #4e00cc;
+    box-shadow: 0 7px 15px #4e00cc;
+    background-position: 0 220px;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+}
+
+.container-mc .imagem-mc {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+}
+
+.container-mc .imagem-mc div {
+    margin: auto;
+}
+
+.container-mc .imagem-mc div img {
+    width: 200px;
+}
+
+.container-mc h2 {
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.container-mc .mc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+    font-size: 50px;
+    letter-spacing: 2px;
+}

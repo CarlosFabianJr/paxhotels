@@ -1,0 +1,347 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+	list-style: none;
+	text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff5931;
+    border-radius: 7px;
+}
+
+html {
+	font-size: 62.5%;
+	background: #EEEEEE;overflow: hidden;
+}
+
+.container {
+	display: flex;
+	width: 100%;
+}
+
+.container .sidebar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	background: #ff3131;
+	background-image: url(../../imgs/Back_Login_Admin.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 12.5%;
+	height: 100vh;
+}
+
+.container .sidebar .top-s {
+	margin-top: 2rem;
+}
+
+.container .sidebar .top-s img {
+	border-radius: 50%;
+	width: 120px;
+	border: 3px solid #FFF;
+}
+
+.container .sidebar .top-s .info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.container .sidebar .top-s span {
+	font-size: 17px;
+	font-weight: 600;
+	color: #FFF;
+}
+
+.container .sidebar .top-s span:last-child {
+	font-weight: 500;
+}
+
+.container .sidebar .opcoes {
+	margin-top: 2rem;
+	font-size: 20px;
+}
+
+.container .sidebar .opcoes ul li {
+	padding: 15px 76px;
+}
+
+.container .sidebar .opcoes ul li a {
+	color: #FFF;
+}
+
+.container .sidebar .opcoes ul .selected {
+	background: #FFF;
+	box-shadow: 0 2px 15px rgba(0, 0, 0, .3);
+}
+
+.container .sidebar .opcoes ul .selected a {
+	color: #ff3131;
+	font-weight: 600;
+}
+
+.container .sidebar .opcoes ul .suporte {
+	background: #951a18;
+}
+
+
+
+
+
+
+.container .main {
+	width: 87.5%;
+}
+
+.container .main header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	background: #FFF;
+	width: 100%;
+	height: 6%;
+}
+
+.container .main header h2 {
+	font-size: 25px;
+	margin-left: 42px;
+}
+
+.container .nav {
+    width: 450px;
+}
+
+.container .nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    font-size: 17px;
+}
+
+.container .nav ul a {
+	color: #951a18;
+}
+
+
+
+
+.container .main .dashboard {
+	width: 100%;
+	height: 70%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container .main .dashboard .container-dash {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	width: 95%;
+	height: 95%;
+	border-radius: 15px;
+	/* background: #FFF;
+	box-shadow: 0 7px 15px rgba(0, 0, 0, .3); */
+}
+
+/* .container .main .dashboard .container-dash .novos-usuarios {
+	width: 55%;
+	height: 100%;
+	padding: 15px;
+	border-radius: 15px;
+	background: #FFF;
+	box-shadow: 0 7px 15px rgba(0, 0, 0, .3);
+} */
+
+.container .main .dashboard .container-dash .hotel-paises {
+	width: 59%;
+	height: 100%;
+	padding: 15px;
+	padding: 15px;
+	border-radius: 15px;
+	background: #FFF;
+	box-shadow: 0 7px 15px rgba(0, 0, 0, .3);
+}
+
+/* .container .main .dashboard .container-dash .hotel-paises .hotel-famosos {
+	padding: 15px;
+	border-radius: 15px;
+	background: #FFF;
+	box-shadow: 0 7px 15px rgba(0, 0, 0, .3);
+} */
+
+.container .main .dashboard .container-dash table {
+	width: 100%;
+}
+
+.container .main .dashboard .container-dash h2 {
+	font-size: 35px;
+	margin-bottom: 3rem;
+}
+
+.container .main .dashboard .container-dash tr {
+	font-size: 15px;
+	padding: 5px 5px;
+}
+
+.container .main .dashboard .container-dash tbody tr:nth-child(odd) {
+	background: #EEEEEE;
+}
+
+.container .main .dashboard .container-dash th {
+	text-align: start;
+	padding-bottom: 15px;
+	padding-left: 5px;
+}
+
+.container .main .dashboard .container-dash td {
+	text-align: start;
+	padding: 10px 5px;
+}
+
+.container .main .dashboard .container-dash .paises-famosos {
+	margin-top: 5rem;
+}
+
+.container .main .dashboard .container-dash .form {
+	width: 40%;
+	height: 100%;
+	overflow: auto;
+	box-shadow: 0 7px 15px rgba(0, 0, 0, .3);
+}
+
+.container .main .dashboard .container-dash .form .form_cadastro_hotel {
+	height: 100%;
+}
+
+.container .main .dashboard .container-dash .agrupamento_cadastro {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2rem;
+
+	background: #FFF;
+	border-radius: 8px;
+	box-shadow: 0 7px 15px rgba(0, 0, 0, .3);
+}
+
+fieldset {
+	padding: 15px;
+	border-radius: 15px;
+	margin-top: 15px;
+	border: 2px solid #ff5931;
+}
+
+legend {
+	font-size: 25px;
+	color: #000;
+	padding: 0 12px;
+}
+
+label,
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+input[type="email"],
+input[type="number"],
+textarea {
+	font-size: 1.5rem;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+textarea {
+	width: 500px;
+	padding: 1.0rem;
+	margin-top: 1.2rem;
+	margin-bottom: 1.2rem;
+	border: 1px solid #1E1E1E;
+	border-radius: 8px;
+}
+
+.div-cadastrar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+input[type="submit"] {
+	color: #FFF;
+	font-weight: 600;
+	width: 325px;
+	padding: 1.0rem;
+	margin-top: 1.2rem;
+	border-radius: 8px;
+	background: #ff5931;
+	border: 2px solid transparent;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all .5s ease;
+}
+
+input[type="submit"]:hover {
+	background: #4e00cc;
+	color: #FFF;
+}
+
+.modal-excluir {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	background: #951a18;
+	color: #FFF;
+	padding: 25px;
+	border-radius: 15px;
+
+	text-align: center;
+}
+
+.modal-excluir p {
+	font-size: 15px;
+}
+
+.modal-excluir button {
+	color: #FFF;
+	font-weight: 600;
+	width: 105px;
+	padding: 1.0rem;
+	margin-top: 1.2rem;
+	border-radius: 8px;
+	background: #ff5931;
+	border: 2px solid transparent;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all .5s ease;
+}
+
+.modal-excluir button:hover {
+	background: #4e00cc;
+	color: #FFF;
+}

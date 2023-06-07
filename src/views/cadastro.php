@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 </head>
 <body>
-    <form id="form_cadastro" name="form_cadastro" class="form_cadastro" method="post" action="">
+    <form id="form_cadastro" name="form_cadastro" class="form_cadastro" method="post" action="../backend/usuario/controllers/adicionar.php">
         <div class="agrupamento_cadastro">
             <div class="voltar">
                 <a href="../../index.php">
@@ -31,101 +31,53 @@
             </div>
             <div class="campos">
                 <div>
-                    <label for="username">Nome</label>
-                    <div>
-                        <input type="text" id="username" name="username" required autofocus>
-                    </div>
-                    <div class="grupo-1">
-                        <div>
+                <fieldset>
+                            <legend>Dados Pessoais</legend>
                             <div>
-                                <label for="nascimento">Nascimento</label>
-                            </div>
+                                <input type="text" id="nome" name="nome" placeholder="Nome" required autofocus>
+                            </div>  
                             <div>
-                                <input type="date" name="nascimento" id="nascimento" required>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <label for="sexo">Sexo</label>
-                            </div>
-                            <div class="grupo-sexo">
-                                <div>
-                                    <input type="radio" value="Masculino" name="sexo" id="sexo" checked>
-                                    <label for="sexo">Masculino</label>
-                                </div>
-                                <div>
-                                    <input type="radio" value="Feminino" name="sexo" id="sexo">
-                                    <label for="sexo">Feminino</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="cpf">CPF</label>
-                    </div>
-                    <div>
-                        <input type="text" name="cpf" id="cpf" required>
-                    </div>
-                    <div>
-                        <label for="cep">CEP</label>
-                    </div>
-                    <div>
-                        <input type="text" name="cep" id="cep" required>
-                    </div>
-                    <div class="grupo-2">
-                        <div>
-                            <div>
-                                <label for="telefone_fixo">Telefone Fixo</label>
+                                <input type="text" name="cpf" id="cpf" oninput="formataCPF(this.value)" maxlength="14" placeholder="CPF" required>
                             </div>
                             <div>
-                                <input type="text" name="telefone_fixo" id="telefone_fixo" maxlength="14" required>
+                                <input type="text" name="celular" id="celular" maxlength="15" oninput="formataCELULAR(this.value)" placeholder="Celular" required>
                             </div>
-                        </div>
-                        <div>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <legend>Acesso</legend>
                             <div>
-                                <label for="celular">Celular</label>
-                            </div>
-                            <div>
-                                <input type="text" name="celular" id="celular" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grupo-3">
-                        <div>
-                            <div>
-                                <label for="email">E-mail</label>
+                                <input type="email" name="email" oninput="formataEMAIL(this.value)" id="email" placeholder="E-mail" required>
                             </div>
                             <div>
-                                <input type="email" name="email" id="email" required>
+                                <input type="password" name="senha" id="senha" placeholder="Senha" required>
                             </div>
-                        </div>
-                        <div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Endereço</legend>
                             <div>
-                                <label for="confirmar_email">Confirmar E-mail</label>
-                            </div>
-                            <div>
-                                <input type="email" name="confirmar_email" id="confirmar_email" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grupo-4">
-                        <div>
-                            <div>
-                                <label for="senha">Senha</label>
+                                <input type="text" name="endereco_cep" oninput="formataCEP(this.value)" id="endereco_cep" placeholder="CEP" required>
                             </div>
                             <div>
-                                <input type="password" name="senha" id="senha" required>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <label for="confirmar_senha">Confirmar Senha</label>
+                                <input type="text" name="endereco_numero" id="endereco_numero" placeholder="Número" required>
                             </div>
                             <div>
-                                <input type="password" name="confirmar_senha" id="confirmar_senha" required>
+                                <input type="text" name="endereco_logradouro" id="endereco_logradouro" placeholder="Logradouro" required>
                             </div>
-                        </div>
-                    </div>
+                            <div>
+                                <input type="text" name="endereco_bairro" id="endereco_bairro" placeholder="Bairro" required>
+                            </div>
+                            <div>
+                                <input type="text" name="endereco_cidade" id="endereco_cidade" placeholder="Cidade" required>
+                            </div>
+                            <div>
+                                <input type="text" name="endereco_estado" id="endereco_estado" placeholder="Estado" required>
+                            </div>
+                            <div>
+                                <input type="text" name="endereco_pais" id="endereco_pais" placeholder="País" required>
+                            </div>
+                        </fieldset>
                     <div>
                         <input type="submit" value="CADASTRAR" name="entrar">
                     </div>

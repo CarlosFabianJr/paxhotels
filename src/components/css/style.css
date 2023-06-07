@@ -77,21 +77,82 @@ header .container-h {
     font-size: 14px;
 }
 
-.nav ul li {
-    letter-spacing: 2px;
+.modal-user {
+    position: absolute;
+    top: 6rem;
+    width: 147px;
+    left: 140.5rem;
+    /* padding: 30px; */
+    background: #FFF;
+    border: 1px solid #4e00cc;
+    border-radius: 15px;
+    display: none;
 }
 
-.nav ul li a {
+.modal-user div {
+    text-align: center;
+}
+
+.modal-user div:last-child {
+    margin-bottom: 0px;
+}
+
+
+.modal-user div div {
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.modal-user div div a {
+    font-size: 16px;
+    width: 70px;
+    border-radius: 5px;
+    border: none;
     color: #444;
-    transition: ease .2s all;
+    background: none;
+    letter-spacing: 2px;
+    text-align: center;
+    cursor: pointer;
+
+    transition: .5s ease;
+}
+
+.modal-user div div:hover {
+    background: #4e00cc !important;
+    color: #fff !important;
+}
+
+.modal-user div div:hover a {
+    color: #fff !important;
+}
+
+.nav ul li {
+    letter-spacing: 2px;
 }
 
 .nav ul li:hover a {
     color: #FF3131;
 }
 
+.nav ul li a,
+.nav ul li:hover select {
+    color: #444;
+    transition: ease .2s all;
+}
+
+.nav ul li:hover a,
+.nav ul li:hover select,
+.nav ul #Login:hover {
+    color: #FF3131;
+}
+
 .nav ul li #idioma {
     cursor: pointer;
+}
+
+.nav ul #Login {
+    cursor: pointer;
+    transition: .5s ease;
 }
 
 #idioma {
@@ -490,11 +551,12 @@ header .container-h {
     letter-spacing: 2px;
 }
 
+.newsletter .container-n form,
 .newsletter .container-n .campos-n {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    width: 40%;
+    width: 65%;
     margin-top: 12px;
 }
 
@@ -607,6 +669,7 @@ header .container-h {
 
 .container-ml .imagem-ml img {
     object-fit: cover;
+    width: 450px;
 }
 
 .container-ml h2 {

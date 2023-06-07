@@ -1,0 +1,235 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+	list-style: none;
+	text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff5931;
+    border-radius: 7px;
+}
+
+html {
+	font-size: 62.5%;
+	background: #EEEEEE;
+}
+
+.container {
+	display: flex;
+	width: 100%;
+}
+
+.container .sidebar {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	background: #ff3131;
+	background-image: url(../../imgs/Back_Login_Admin.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 12.5%;
+	height: 100vh;
+}
+
+.container .sidebar .top-s {
+	margin-top: 2rem;
+}
+
+.container .sidebar .top-s img {
+	border-radius: 50%;
+	width: 120px;
+	border: 3px solid #FFF;
+}
+
+.container .sidebar .top-s .info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.container .sidebar .top-s span {
+	font-size: 17px;
+	font-weight: 600;
+	color: #FFF;
+}
+
+.container .sidebar .top-s span:last-child {
+	font-weight: 500;
+}
+
+.container .sidebar .opcoes {
+	margin-top: 2rem;
+	font-size: 20px;
+}
+
+.container .sidebar .opcoes ul li {
+	padding: 15px 73px;
+}
+
+.container .sidebar .opcoes ul li a {
+	color: #FFF;
+}
+
+.container .sidebar .opcoes ul .selected {
+	background: #FFF;
+	box-shadow: 0 2px 15px rgba(0, 0, 0, .3);
+}
+
+.container .sidebar .opcoes ul .selected a {
+	color: #ff3131;
+	font-weight: 600;
+}
+
+.container .sidebar .opcoes ul .suporte {
+	background: #951a18;
+}
+
+
+
+
+
+
+.container .main {
+	width: 87.5%;
+}
+
+.container .main header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	background: transparent;
+	width: 100%;
+	height: 7%;
+}
+
+.container .main header h2 {
+	font-size: 25px;
+	margin-left: 42px;
+}
+
+.container .nav {
+    width: 450px;
+}
+
+.container .nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    font-size: 17px;
+}
+
+.container .nav ul a {
+	color: #951a18;
+}
+
+
+
+
+.container .main .dashboard {
+	width: 100%;
+	height: 93%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container .main .dashboard .container-dash {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	width: 95%;
+	height: 95%;
+	border-radius: 15px;
+	/* background: #FFF;
+	box-shadow: 0 7px 15px rgba(0, 0, 0, .3); */
+}
+
+.container .main .dashboard .container-dash .novos-usuarios {
+	width: 55%;
+	height: 100%;
+	padding: 15px;
+	border-radius: 15px;
+	background: #FFF;
+	box-shadow: 0 7px 15px rgba(0, 0, 0, .3);
+}
+
+.container .main .dashboard .container-dash .hotel-paises {
+	width: 45%;
+	height: 100%;
+	padding: 15px;
+}
+
+.container .main .dashboard .container-dash .hotel-paises .hotel-famosos {
+	padding: 15px;
+	border-radius: 15px;
+	background: #ff5931;
+	color: #FFF;
+	box-shadow: 0 7px 15px rgba(0, 0, 0, .3);
+}
+
+.container .main .dashboard .container-dash .hotel-paises .paises-famosos {
+	padding: 15px;
+	border-radius: 15px;
+	background: #951a18;
+	color: #FFF;
+	box-shadow: 0 7px 15px rgba(0, 0, 0, .3);
+}
+
+.container .main .dashboard .container-dash table {
+	width: 100%;
+}
+
+.container .main .dashboard .container-dash h2 {
+	font-size: 35px;
+	margin-bottom: 3rem;
+}
+
+.container .main .dashboard .container-dash tr {
+	font-size: 15px;
+	padding: 5px 5px;
+	border-radius: 25px;
+}
+
+.container .main .dashboard .container-dash tbody tr:nth-child(odd) {
+	background: #EEEEEE;
+}
+
+.container .main .dashboard .container-dash .hotel-paises .hotel-famosos tbody tr:nth-child(odd) {
+	background: #951a18;
+}
+
+.container .main .dashboard .container-dash .hotel-paises .paises-famosos tbody tr:nth-child(odd) {
+	background: #ff3131;
+}
+
+.container .main .dashboard .container-dash th {
+	text-align: start;
+	padding-bottom: 15px;
+	padding-left: 5px;
+}
+
+.container .main .dashboard .container-dash td {
+	text-align: start;
+	padding: 10px 5px;
+}
+
+.container .main .dashboard .container-dash .paises-famosos {
+	margin-top: 5rem;
+}

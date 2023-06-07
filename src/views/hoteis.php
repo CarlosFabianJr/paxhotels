@@ -1,3 +1,44 @@
+<?php
+
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    $nome = "Login";
+    $userId = 0;
+    $nomeValue = 0;
+    $destino = "Destino";
+    $checkIn = "26/08/2023";
+    $checkOut = "26/08/2023";
+    $hospedes = 1;
+    $quartosPes = 1;
+    $reserva = true;
+    if(isset($_SESSION["Cadastrado"])) {
+        $nome = $_SESSION["Cadastrado"];
+        $nomeValue = 1;
+    } elseif(isset($_SESSION["Logado"])) {
+        $nome = $_SESSION["Logado"]["nome"];
+        $userId = $_SESSION["Logado"]["iduser"];
+        $nomeValue = 1;
+        $reserva = false;
+    }
+    if(isset($_SESSION["quartos"])) {
+        $destino = $_SESSION["pesquisa"]["destino"];
+        $checkIn = $_SESSION["pesquisa"]["checkIn"];
+        $checkIn = str_replace("0", "O", $checkIn);
+        $checkOut = $_SESSION["pesquisa"]["checkOut"];
+        $checkOut = str_replace("0", "O", $checkOut);
+        $hospedes = $_SESSION["pesquisa"]["hospedes"];
+        $quartosPes = $_SESSION["pesquisa"]["quartos"];
+        $quartos = $_SESSION["quartos"];
+    }
+    
+    $_SESSION["hotel"] = null;
+    $_SESSION["preco"] = null;
+    $_SESSION["comodidades"] = null;
+    $_SESSION["classificacao"] = null;
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -38,10 +79,20 @@
                                 Suporte
                             </a>
                         </li>
-                        <li id="Login">
+                        <li id="Login" value="<?php echo $nomeValue; ?>" onclick="openLogin(this)">
                             <a href="#">
                                 <i class="bi bi-person-fill"></i>
-                                Login
+                                <?php echo $nome; ?>
+                                <div id="modal-user" class="modal-user">
+                                    <div class="container-user">
+                                        <div onclick="openConstrucao()">
+                                            <a href="#">Perfil</a>
+                                        </div>
+                                        <div>
+                                            <a href="../auth/sair/logout.php" class="sair">Sair</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </a>
                         </li>
                         <li id="Idioma">
@@ -57,23 +108,33 @@
         </header>
 
         <section class="hotels-search">
-            <form action="#" method="post" class="container-hs">
+            <form action="../backend/quarto/controllers/pesquisadestino.php" method="post" class="container-hs">
                 <div class="campos">
                     <div>
-                        <input type="text" class="destino" placeholder="Busque cidade">
+                        <input type="text" class="destino" name="destino" value="<?php echo $destino; ?>">
                         <i class="bi bi-geo-alt"></i>
                     </div>
                     <span class="periodo">
                         <div>
-                            <input type="text" name="check-in" id="check-in" placeholder="Check-in" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <input type="text" name="check-in" id="check-in" value="<?php echo $checkIn; ?>" onfocus="(this.type='date')" onblur="dateCheck(this)">
                         </div>
                         <div>
-                            <input type="text" name="check-out" id="check-out" placeholder="Check-out" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <input type="text" name="check-out" id="check-out" value="<?php echo $checkOut; ?>" onfocus="(this.type='date')" onblur="dateCheck(this)">
                         </div>
                     </span>
                     <div>
-                        <input type="text" class="room-pax" placeholder="1 quarto, 3 hóspedes" readonly>
+                        <input type="text" class="room-hos" value="<?php echo $quartosPes; ?> quarto, <?php echo $hospedes; ?> hópedes" onclick="roomHos()" readonly>
                         <i class="bi bi-people"></i>
+                        <div id="modal-rp" class="modal-rp">
+                            <div>
+                                <input type="number" name="quartos" id="quartos" value="1" oninput="setQuarto(this.value)">
+                                <label for="quartos">Quarto(s)</label>
+                            </div>
+                            <div>
+                                <input type="number" name="hospedes" id="hospedes" value="3" oninput="setHospede(this.value)">
+                                <label for="hospedes">Hóspede(s)</label>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <input type="submit" value="NOVA BUSCA" class="pesquisar">
@@ -83,71 +144,6 @@
         </section>
 
         <section class="list-hoteis">
-            <aside class="filtros">
-                <div class="top-filtro">
-                    <div>
-                        <h2>Filtro</h2>
-                    </div>
-                    <div>
-                        <a href="#">Limpar</a>
-                    </div>
-                </div>
-                <div class="body-filtro">
-                    <section class="servicos">
-                        <div>
-                            <h3>Serviços</h3>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>
-                                    <input type="checkbox" name="todas-opcoes" id="todas-opcoes">
-                                    <label for="todas-opcoes">Todas as opções</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="internet" id="internet">
-                                    <label for="internet">Internet</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="restaurante" id="restaurante">
-                                    <label for="restaurante">Restaurante</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="lavanderia" id="lavanderia">
-                                    <label for="lavanderia">Lavanderia</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="cafe" id="cafe">
-                                    <label for="cafe">Café da Manhã</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="academia" id="academia">
-                                    <label for="academia">Academia</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="piscina" id="piscina">
-                                    <label for="piscina">Piscina</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox" name="estacionamento" id="estacionamento">
-                                    <label for="estacionamento">Estacionamento</label>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
-                    <section class="preco">
-                        <div>
-                            <h3>Preço</h3>
-                        </div>
-                        <div>
-                            <div>
-                                <span>RS 5OO</span>
-                                <span>RS 25OO</span>
-                            </div>
-                            <input type="range" min="0" max="11" value="7" step="1">
-                        </div>
-                    </section>
-                </div>
-            </aside>
             <aside class="hoteis">
                 <div class="container-hoteis">
                     <div class="top">
@@ -171,138 +167,79 @@
                         </div>
                     </div>
                     <div class="lista">
-                        <div class="hotel-1">
-                            <div class="foto"></div>
-                            <div class="informacoes">
-                                <div class="info-top">
-                                    <div class="info-detalhes">
-                                        <div>
-                                            <h3>Windsor Florida Hotel</h3>
-                                        </div>
-                                        <div>
-                                            <h5>Rio de Janeiro - RJ - Brasil</h5>
-                                        </div>
-                                        <div class="avaliacao">
-                                            <span>Muito Bom</span>
-                                            <h6>13.775 avaliações</span>
-                                        </div>
-                                        <div>
-                                            <span>Café da Manhã incluso</span>
+                        <?php for($i = 0; $i < count($quartos); ++$i) { ?>
+                            <div class="hotel-1">
+                                <a onclick="teste(`<?php echo $quartos[$i]['idhotel']; ?>`, `<?php echo $userId; ?>`)">
+                                    <script>
+                                        function teste(idhotel, iduser) {
+                                            console.log(idhotel, iduser)
+                                        }
+                                    </script>
+                                    <div class="foto" style="background-image: url(<?php echo $quartos[$i]['url']; ?>"></div>
+                                    <div class="informacoes">
+                                        <div class="info-top">
+                                            <div class="info-detalhes">
+                                                <div>
+                                                    <h3><?php echo $quartos[$i]["nome"]; ?></h3>
+                                                </div>
+                                                <div>
+                                                    <h5><?php echo $quartos[$i]["cidade"]; ?> - <?php echo $quartos[$i]["estado"]; ?> - <?php echo $quartos[$i]["pais"]; ?></h5>
+                                                </div>
+                                                <div class="avaliacao">
+                                                    <?php if($quartos[$i]["classificacao"] == 5) { ?>
+                                                        <div class="stars">
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                        </div>
+                                                    <?php } elseif($quartos[$i]["classificacao"] == 4) { ?>
+                                                        <div class="stars">
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                        </div>
+                                                    <?php } elseif($quartos[$i]["classificacao"] == 3) { ?>
+                                                        <div class="stars">
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                        </div>
+                                                    <?php } elseif($quartos[$i]["classificacao"] == 2) { ?>
+                                                        <div class="stars">
+                                                            <i class="bi bi-star-fill"></i>
+                                                            <i class="bi bi-star-fill"></i>
+                                                        </div>
+                                                    <?php } elseif($quartos[$i]["classificacao"] == 1) { ?>
+                                                        <div class="stars">
+                                                            <i class="bi bi-star-fill"></i>
+                                                        </div>
+                                                    <?php } ?>
+                                                    <h6><?php echo $quartos[$i]["avaliacao"]; ?> avaliações</span>
+                                                </div>
+                                                <div class="comodidades">
+                                                    <span><small>Incluso:</small></span>
+                                                    <p><?php echo $quartos[$i]["comodidades"]; ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="precos">
+                                                <div>
+                                                    <span>RESERVAR</span>
+                                                </div>
+                                                <div>
+                                                    <h2>Diária</h2>
+                                                </div>
+                                                <div>
+                                                    <h2><span>R$</span> <?php echo $quartos[$i]["valor_diaria"]; ?></h2>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="precos">
-                                        <div>
-                                            <h>5 diárias, 1 hóspede</h>
-                                        </div>
-                                        <div>
-                                            <span>RS</span> <h3>8.464</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="info-bottom">
-                                    <h3>Acumule 1.OOO pontos com PAXfidelidade</h3>
-                                </div>
+                                </a>
                             </div>
-                        </div>
-                        <div class="hotel-1">
-                            <div class="foto"></div>
-                            <div class="informacoes">
-                                <div class="info-top">
-                                    <div class="info-detalhes">
-                                        <div>
-                                            <h3>Windsor Florida Hotel</h3>
-                                        </div>
-                                        <div>
-                                            <h5>Rio de Janeiro - RJ - Brasil</h5>
-                                        </div>
-                                        <div class="avaliacao">
-                                            <span>Muito Bom</span>
-                                            <h6>13.775 avaliações</span>
-                                        </div>
-                                        <div>
-                                            <span>Café da Manhã incluso</span>
-                                        </div>
-                                    </div>
-                                    <div class="precos">
-                                        <div>
-                                            <h>5 diárias, 1 hóspede</h>
-                                        </div>
-                                        <div>
-                                            <span>RS</span> <h3>8.464</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="info-bottom">
-                                    <h3>Acumule 1.OOO pontos com PAXfidelidade</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hotel-1">
-                            <div class="foto"></div>
-                            <div class="informacoes">
-                                <div class="info-top">
-                                    <div class="info-detalhes">
-                                        <div>
-                                            <h3>Windsor Florida Hotel</h3>
-                                        </div>
-                                        <div>
-                                            <h5>Rio de Janeiro - RJ - Brasil</h5>
-                                        </div>
-                                        <div class="avaliacao">
-                                            <span>Muito Bom</span>
-                                            <h6>13.775 avaliações</span>
-                                        </div>
-                                        <div>
-                                            <span>Café da Manhã incluso</span>
-                                        </div>
-                                    </div>
-                                    <div class="precos">
-                                        <div>
-                                            <h>5 diárias, 1 hóspede</h>
-                                        </div>
-                                        <div>
-                                            <span>RS</span> <h3>8.464</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="info-bottom">
-                                    <h3>Acumule 1.OOO pontos com PAXfidelidade</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="hotel-1">
-                            <div class="foto"></div>
-                            <div class="informacoes">
-                                <div class="info-top">
-                                    <div class="info-detalhes">
-                                        <div>
-                                            <h3>Windsor Florida Hotel</h3>
-                                        </div>
-                                        <div>
-                                            <h5>Rio de Janeiro - RJ - Brasil</h5>
-                                        </div>
-                                        <div class="avaliacao">
-                                            <span>Muito Bom</span>
-                                            <h6>13.775 avaliações</span>
-                                        </div>
-                                        <div>
-                                            <span>Café da Manhã incluso</span>
-                                        </div>
-                                    </div>
-                                    <div class="precos">
-                                        <div>
-                                            <h>5 diárias, 1 hóspede</h>
-                                        </div>
-                                        <div>
-                                            <span>RS</span> <h3>8.464</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="info-bottom">
-                                    <h3>Acumule 1.OOO pontos com PAXfidelidade</h3>
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </aside>
@@ -313,17 +250,19 @@
                 <div class="title-n">
                     <h2>INSCREVA-SE PARA RECEBER OFERTAS EXCLUSIVAS!</h2>
                 </div>
-                <div class="campos-n">
-                    <div>
-                        <input type="text" class="nome" placeholder="Nome">
+                <form action="../backend/newsletter/controllers/adicionar.php" method="post">
+                    <div class="campos-n">
+                        <div>
+                            <input type="text" name="nome" class="nome" placeholder="Nome">
+                        </div>
+                        <div>
+                            <input type="text" name="email" class="email" placeholder="E-mail">
+                        </div>
+                        <div>
+                            <input type="submit" class="eu_quero" value="EU QUERO">
+                        </div>
                     </div>
-                    <div>
-                        <input type="text" class="email" placeholder="E-mail">
-                    </div>
-                    <div>
-                        <input type="submit" class="eu_quero" value="EU QUERO">
-                    </div>
-                </div>
+                </form>
             </div>
         </section>
 
@@ -364,15 +303,17 @@
                 <div>
                     <h2>LOGIN</h2>
                 </div>
-                <div>
-                    <input type="text" class="email" placeholder="E-mail" required>
-                </div>
-                <div>
-                    <input type="password" class="senha" placeholder="Senha" required>
-                </div>
-                <div>
-                    <input type="submit" value="Entrar" class="entrar">
-                </div>
+                <form action="../auth/login/valida_login.php" method="post">
+                    <div>
+                        <input type="text" class="email" name="email" placeholder="E-mail" required>
+                    </div>
+                    <div>
+                        <input type="password" class="senha" name="senha" placeholder="Senha" required>
+                    </div>
+                    <div>
+                        <input type="submit" value="Entrar" class="entrar">
+                    </div>
+                </form>
                 <div class="novo">
                     <div>
                         <h3>Não tem conta?</h3>

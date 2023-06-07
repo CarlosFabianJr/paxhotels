@@ -1,3 +1,21 @@
+<?php
+
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
+    $nome = "Login";
+    $nomeValue = 0;
+    if(isset($_SESSION["Cadastrado"])) {
+        $nome = $_SESSION["Cadastrado"];
+        $nomeValue = 1;
+    } elseif(isset($_SESSION["Logado"])) {
+        $nome = $_SESSION["Logado"]["nome"];
+        $nomeValue = 1;
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -38,11 +56,19 @@
                                 Suporte
                             </a>
                         </li>
-                        <li id="Login" onclick="Login()">
-                            <a href="#">
-                                <i class="bi bi-person-fill"></i>
-                                Login
-                            </a>
+                        <li id="Login" value="<?php echo $nomeValue; ?>" onclick="openLogin(this)">
+                            <i class="bi bi-person-fill"></i>
+                            <?php echo $nome; ?>
+                            <div id="modal-user" class="modal-user">
+                                <div class="container-user">
+                                    <div onclick="openConstrucao()">
+                                        <a href="#">Perfil</a>
+                                    </div>
+                                    <div>
+                                        <a href="./auth/sair/logout.php" class="sair">Sair</a>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li id="Idioma">
                             <select name="idioma" id="idioma">
@@ -57,33 +83,33 @@
         </header>
 
         <section class="hotels-search">
-            <form action="#" method="post" class="container-hs">
+            <form action="./src/backend/quarto/controllers/pesquisadestino.php" method="post" class="container-hs">
                 <div class="titulo-form">
                     <h2>Vai para onde?</h2>
                 </div>
                 <div class="campos">
                     <div>
-                        <input type="text" class="destino" placeholder="Busque cidade">
+                        <input type="text" name="destino" class="destino" placeholder="Busque cidade">
                         <i class="bi bi-geo-alt"></i>
                     </div>
                     <span class="periodo">
                         <div>
-                            <input type="text" name="check-in" id="check-in" placeholder="Check-in" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <input type="text" name="check-in" id="check-in" placeholder="Check-in" onfocus="(this.type='date')" onblur="dateCheck(this)">
                         </div>
                         <div>
-                            <input type="text" name="check-out" id="check-out" placeholder="Check-out" onfocus="(this.type='date')" onblur="(this.type='text')">
+                            <input type="text" name="check-out" id="check-out" placeholder="Check-out" onfocus="(this.type='date')" onblur="dateCheck(this)">
                         </div>
                     </span>
                     <div>
-                        <input type="text" class="room-pax" placeholder="1 quarto, 3 hóspedes" onclick="roomHos()" readonly>
+                        <input type="text" class="room-pax" value="1 quarto, 3 hóspedes" onclick="roomHos()" readonly>
                         <i class="bi bi-people"></i>
                         <div id="modal-rp" class="modal-rp">
                             <div>
-                                <input type="number" name="quartos" id="quartos" value="1" oninput="setQuarto(this.value)">
+                                <input type="number" name="quartos" id="quartos" value="1" min="1" oninput="setQuarto(this.value)">
                                 <label for="quartos">Quarto(s)</label>
                             </div>
                             <div>
-                                <input type="number" name="hospedes" id="hospedes" value="3" oninput="setHospede(this.value)">
+                                <input type="number" name="hospedes" id="hospedes" value="3" min="1" oninput="setHospede(this.value)">
                                 <label for="hospedes">Hóspede(s)</label>
                             </div>
                         </div>
@@ -183,17 +209,19 @@
                 <div class="title-n">
                     <h2>INSCREVA-SE PARA RECEBER OFERTAS EXCLUSIVAS!</h2>
                 </div>
-                <div class="campos-n">
-                    <div>
-                        <input type="text" class="nome" placeholder="Nome">
+                <form action="./src/backend/newsletter/controllers/adicionar.php" method="post">
+                    <div class="campos-n">
+                        <div>
+                            <input type="text" name="nome" class="nome" placeholder="Nome">
+                        </div>
+                        <div>
+                            <input type="text" name="email" class="email" placeholder="E-mail">
+                        </div>
+                        <div>
+                            <input type="submit" class="eu_quero" value="EU QUERO">
+                        </div>
                     </div>
-                    <div>
-                        <input type="text" class="email" placeholder="E-mail">
-                    </div>
-                    <div>
-                        <input type="submit" class="eu_quero" value="EU QUERO">
-                    </div>
-                </div>
+                </form>
             </div>
         </section>
 
@@ -223,7 +251,7 @@
         </footer>
     </div>
 
-    <div class="modal-login" id="modal-login" onclick="hideLogin(event)">
+    <div class="modal-login" id="modal-login" onclick="closeLogin(event)">
         <div class="container-ml">
             <div class="imagem-ml">
                 <div>
@@ -234,15 +262,17 @@
                 <div>
                     <h2>LOGIN</h2>
                 </div>
-                <div>
-                    <input type="text" class="email" placeholder="E-mail" required>
-                </div>
-                <div>
-                    <input type="password" class="senha" placeholder="Senha" required>
-                </div>
-                <div>
-                    <input type="submit" value="Entrar" class="entrar">
-                </div>
+                <form action="./src/auth/login/valida_login.php" method="post">
+                    <div>
+                        <input type="text" class="email" placeholder="E-mail" required>
+                    </div>
+                    <div>
+                        <input type="password" class="senha" placeholder="Senha" required>
+                    </div>
+                    <div>
+                        <input type="submit" value="Entrar" class="entrar">
+                    </div>
+                </form>
                 <div class="novo">
                     <div>
                         <h3>Não tem login?</h3>
@@ -259,7 +289,7 @@
         <div class="container-md">
             <div class="imagem-md">
                 <div>
-                    <img src="./src/components/imgs/desenvolvimento.gif" alt="search hotels">
+                    <img src="./src/components/imgs/desenvolvimento.gif" alt="PAX Hotels">
                 </div>
             </div>
             <div class="md">
