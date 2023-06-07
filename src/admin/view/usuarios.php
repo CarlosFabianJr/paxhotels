@@ -87,99 +87,85 @@
                             <h2>Usuários cadastrados</h2>
                         </div>
                         <div>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>CPF</th>
-                                        <th>Data de Cadastro</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Rosemary Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rosaimeé Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Teófilo Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Júnior Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Aruna Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Carlos Fabian Jr</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>João Carlos</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Marta Silva</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Maria Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Carlos Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lucas Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rafael Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Filipe Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Marcos Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mario Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <table id="table-users"></table>
                         </div>
                     </div>
+                    <aside class="form">
+                        <form id="form_cadastro_usuario" name="form_cadastro_usuario" class="form_cadastro_usuario" enctype="multipart/form-data" method="post" action="../../backend/usuario/controllers/adicionar.php">
+                            <div class="agrupamento_cadastro">
+                                <div class="campos">
+                                    <div>
+                                        <fieldset>
+                                            <legend>Dados Gerais</legend>
+                                            <div>
+                                                <input type="hidden" id="id" name="id">
+                                            </div>
+                                            <div>
+                                                <input type="text" id="nome" name="nome" placeholder="Nome" required>
+                                            </div>
+                                            <div>
+                                                <input type="text" name="cpf" id="cpf" oninput="formataCPF(this.value)" maxlength="14" placeholder="CPF" required>
+                                            </div>
+                                            <div>
+                                                <input type="text" name="celular" id="celular" maxlength="15" oninput="formataCELULAR(this.value)" placeholder="Celular" required>
+                                            </div>
+                                            <div>
+                                                <input type="email" name="email" oninput="formataEMAIL(this.value)" id="email" placeholder="E-mail" required>
+                                            </div>
+                                            <div>
+                                                <input type="file" name="foto_user" id="foto_user" required>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset>
+                                            <legend>Endereço</legend>
+                                            <div>
+                                                <input type="text" name="endereco_cep" oninput="formataCEP(this.value)" id="endereco_cep" placeholder="CEP" maxlength="9" required>
+                                            </div>
+                                            <div>
+                                                <input type="text" name="endereco_numero" id="endereco_numero" placeholder="Número" required>
+                                            </div>
+                                            <div>
+                                                <input type="text" name="endereco_logradouro" id="endereco_logradouro" placeholder="Logradouro" required>
+                                            </div>
+                                            <div>
+                                                <input type="text" name="endereco_bairro" id="endereco_bairro" placeholder="Bairro" required>
+                                            </div>
+                                            <div>
+                                                <input type="text" name="endereco_cidade" id="endereco_cidade" placeholder="Cidade" required>
+                                            </div>
+                                            <div>
+                                                <input type="text" name="endereco_estado" id="endereco_estado" placeholder="Estado" required>
+                                            </div>
+                                            <div>
+                                                <input type="text" name="endereco_pais" id="endereco_pais" placeholder="País" required>
+                                            </div>
+                                        </fieldset>
+                                        <div class="div-cadastrar">
+                                            <input type="submit" value="CADASTRAR" id="btnAction" name="entrar">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </aside>
                 </div>
             </main>
+
+            <div class="modal-excluir" id="modal-excluir">
+                <form action="../../backend/usuario/controllers/deletar.php" method="post">
+                    <div>
+                        <input type="hidden" name="id" id="idExcluir">
+                    </div>
+                    <p>Deseja remover este usuário?</p>
+                    <div class="div-remover">
+                        <button type="submit" value="Remover" id="remover" name="remover">Remover</button>
+                        <button type="button" value="Cancelar" id="cancelar" onclick="notRemove()" name="cancelar">Cancelar</button>
+                    </div>
+                </form>
+            </div>
         </aside>
     </div>
 
-    <script src="../../components/js/admin_painel.js"></script>
+    <script src="../../components/js/admin/usuario.js"></script>
 </body>
 </html>

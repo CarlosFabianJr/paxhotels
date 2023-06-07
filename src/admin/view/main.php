@@ -96,42 +96,7 @@
                                 <h2>Hotéis + selecionados</h2>
                             </div>
                             <div>
-                                <table id="table-hotel" class="table-hotel">
-                                    <!-- <thead>
-                                        <tr>
-                                            <th>Nome</th>
-                                            <th>CNPJ</th>
-                                            <th>Data de Cadastro</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Pax hotel</td>
-                                            <td>12.345.678/0001-90</td>
-                                            <td>01/05/2023</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Test hotel</td>
-                                            <td>12.345.678/0001-90</td>
-                                            <td>01/05/2023</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Teste hotel</td>
-                                            <td>12.345.678/0001-90</td>
-                                            <td>01/05/2023</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hello hotel</td>
-                                            <td>12.345.678/0001-90</td>
-                                            <td>01/05/2023</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hi hotel</td>
-                                            <td>12.345.678/0001-90</td>
-                                            <td>01/05/2023</td>
-                                        </tr>
-                                    </tbody> -->
-                                </table>
+                                <table id="table-hotel" class="table-hotel"></table>
                             </div>
                         </div>
                         <div class="paises-famosos">
@@ -139,36 +104,7 @@
                                 <h2>Países + selecionados</h2>
                             </div>
                             <div>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>País</th>
-                                            <th>-</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Brasil</td>
-                                            <td>78%</td>
-                                        </tr>
-                                        <tr>
-                                            <td>EUA</td>
-                                            <td>59%</td>
-                                        </tr>
-                                        <tr>
-                                            <td>França</td>
-                                            <td>36%</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Espanha</td>
-                                            <td>24%</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Israel</td>
-                                            <td>24%</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <table id="table-pais" class="table-pais"></table>
                             </div>
                         </div>
                     </div>

@@ -119,6 +119,7 @@ html {
 
 .container .main header h2 {
 	font-size: 25px;
+	margin-left: 42px;
 }
 
 .container .nav {
@@ -151,7 +152,7 @@ html {
 .container .main .dashboard .container-dash {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 
 	width: 95%;
 	height: 95%;
@@ -159,7 +160,7 @@ html {
 }
 
 .container .main .dashboard .container-dash .novos-usuarios {
-	width: 100%;
+	width: 59%;
 	height: 100%;
 	padding: 15px;
 	border-radius: 15px;
@@ -194,4 +195,134 @@ html {
 .container .main .dashboard .container-dash td {
 	text-align: start;
 	padding: 10px 5px;
+}
+
+.container .main .dashboard .container-dash .paises-famosos {
+	margin-top: 5rem;
+}
+
+.container .main .dashboard .container-dash .form {
+	width: 40%;
+	height: 100%;
+	overflow: auto;
+	box-shadow: 0 7px 15px rgba(0, 0, 0, .3);
+}
+
+.container .main .dashboard .container-dash .form .form_cadastro_usuario {
+	height: 100%;
+}
+
+.container .main .dashboard .container-dash .agrupamento_cadastro {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2rem;
+
+	background: #FFF;
+	border-radius: 8px;
+	box-shadow: 0 7px 15px rgba(0, 0, 0, .3);
+}
+
+fieldset {
+	padding: 15px;
+	border-radius: 15px;
+	margin-top: 15px;
+	border: 2px solid #951a18;
+}
+
+legend {
+	font-size: 25px;
+	color: #000;
+	padding: 0 12px;
+}
+
+label,
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+input[type="email"],
+input[type="number"],
+textarea {
+	font-size: 1.5rem;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+textarea {
+	width: 500px;
+	padding: 1.0rem;
+	margin-top: 1.2rem;
+	margin-bottom: 1.2rem;
+	border: 1px solid #1E1E1E;
+	border-radius: 8px;
+}
+
+.div-cadastrar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+input[type="submit"] {
+	color: #FFF;
+	font-weight: 600;
+	width: 325px;
+	padding: 1.0rem;
+	margin-top: 1.2rem;
+	border-radius: 8px;
+	background: #ff3131;
+	border: 2px solid transparent;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all .5s ease;
+}
+
+input[type="submit"]:hover {
+	background: #951a18;
+	color: #FFF;
+}
+
+.modal-excluir {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	background: #ff5931;
+	color: #FFF;
+	padding: 25px;
+	border-radius: 15px;
+
+	text-align: center;
+}
+
+.modal-excluir p {
+	font-size: 15px;
+}
+
+.modal-excluir button {
+	color: #FFF;
+	font-weight: 600;
+	width: 105px;
+	padding: 1.0rem;
+	margin-top: 1.2rem;
+	border-radius: 8px;
+	background: #ff5931;
+	border: 2px solid transparent;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all .5s ease;
+}
+
+.modal-excluir button:hover {
+	background: #ff3131;
+	color: #FFF;
 }

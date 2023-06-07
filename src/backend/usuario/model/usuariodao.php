@@ -132,19 +132,14 @@
                     cpf = :cpf,
                     celular = :celular,
                     email = :email,
-                    senha = :senha,
+                    -- senha = :senha,
                     perfil = :perfil,
                     endereco_cep = :endereco_cep,
                     endereco_numero = :endereco_numero,
                     endereco_logradouro = :endereco_logradouro,
                     endereco_cidade = :endereco_cidade,
                     endereco_estado = :endereco_estado,
-                    endereco_pais = :endereco_pais,
-                    dados_pagamento_forma = :dados_pagamento_forma,
-                    dados_pagamento_tipo_cartao = :dados_pagamento_tipo_cartao,
-                    dados_pagamento_numero_cartao = :dados_pagamento_numero_cartao,
-                    dados_pagamento_codigo_cartao = :dados_pagamento_codigo_cartao,
-                    dados_pagamento_validade_cartao = :dados_pagamento_validade_cartao
+                    endereco_pais = :endereco_pais
                     WHERE Id = :Id";
             $stmt = $PDO->prepare($sql);
 
@@ -152,7 +147,7 @@
             $stmt->bindValue(":cpf", $usuario->getCPF());
             $stmt->bindValue(":celular", $usuario->getCelular());
             $stmt->bindValue(":email", $usuario->getEmail());
-            $stmt->bindValue(":senha", $usuario->getSenha());
+            // $stmt->bindValue(":senha", $usuario->getSenha());
             $stmt->bindValue(":perfil", $usuario->getPerfil());
             $stmt->bindValue(":endereco_cep", $usuario->getEndereco_cep());
             $stmt->bindValue(":endereco_numero", $usuario->getEndereco_numero());
@@ -160,11 +155,6 @@
             $stmt->bindValue(":endereco_cidade", $usuario->getEndereco_cidade());
             $stmt->bindValue(":endereco_estado", $usuario->getEndereco_estado());
             $stmt->bindValue(":endereco_pais", $usuario->getEndereco_pais());
-            $stmt->bindValue(":dados_pagamento_forma", $usuario->getDados_pagamento_forma());
-            $stmt->bindValue(":dados_pagamento_tipo_cartao", $usuario->getDados_pagamento_tipo_cartao());
-            $stmt->bindValue(":dados_pagamento_numero_cartao", $usuario->getDados_pagamento_numero_cartao());
-            $stmt->bindValue(":dados_pagamento_codigo_cartao", $usuario->getDados_pagamento_codigo_cartao());
-            $stmt->bindValue(":dados_pagamento_validade_cartao", $usuario->getDados_pagamento_validade_cartao());
             $stmt->bindValue(":Id", $usuario->getId());
 
             $stmt->execute();
@@ -209,6 +199,39 @@
                 }
 
                 return empty($Usuario) ? new Usuario() : $Usuario;
+            } catch(Exception $e) {
+                throw new Exception($e->getMessage());
+            }
+        }
+
+        public static function getUsuarioById($id) : Usuario {
+            try {
+                $param[":id"] = $id;
+                $PDO = connectDB::active();
+                $sql = "SELECT * FROM usuario WHERE id = :id;";
+                $stmt = $PDO->prepare($sql);
+                $stmt->execute($param);
+
+                $row = $stmt->fetch(PDO::FETCH_OBJ);
+                $usuario = new Usuario();
+                if(!empty($row)) {
+                    $usuario->setId($row->id);
+                    $usuario->setNome($row->nome);
+                    $usuario->setCPF($row->cpf);
+                    $usuario->setCelular($row->celular);
+                    $usuario->setEmail($row->email);
+                    $usuario->setEndereco_cep($row->endereco_cep);
+                    $usuario->setEndereco_numero($row->endereco_numero);
+                    $usuario->setEndereco_logradouro($row->endereco_logradouro);
+                    $usuario->setEndereco_bairro($row->endereco_bairro);
+                    $usuario->setEndereco_cidade($row->endereco_cidade);
+                    $usuario->setEndereco_estado($row->endereco_estado);
+                    $usuario->setEndereco_pais($row->endereco_pais);
+                    $usuario->setURL($row->url);
+                    $usuario->setData_cadatro($row->data_cadastro);
+                }
+
+                return empty($usuario) ? new Usuario : $usuario;
             } catch(Exception $e) {
                 throw new Exception($e->getMessage());
             }

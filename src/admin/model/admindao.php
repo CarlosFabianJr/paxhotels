@@ -3,6 +3,8 @@
     require_once("../../database/configDB.php");
     require_once("../../admin/model/admin.php");
     require_once("../../backend/hotel/model/hotel.php");
+    require_once("../../backend/usuario/model/usuario.php");
+    require_once("../../backend/reserva/model/reserva.php");
 
     class AdminDAO {
 
@@ -82,6 +84,30 @@
                 throw new Exception($e->getMessage());
             }
         }
+        public static function getPaisesStar() {
+            try {
+                $PDO = connectDB::active();
+                $sql = "SELECT COUNT(h.id) AS num, h.endereco_pais FROM hotel h
+                            INNER JOIN quarto q ON q.idhotel = h.id
+                                GROUP BY h.endereco_pais ORDER BY num DESC";
+                $stmt = $PDO->prepare($sql);
+                $stmt->execute();
+
+                $results = array();
+
+                while($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+                    $objeto = new Hotel();
+
+                    $objeto->setEndereco_pais($row->endereco_pais);
+
+                    $results[] = $objeto;
+                }
+
+                return $results;
+            } catch(Exception $e) {
+                throw new Exception($e->getMessage());
+            }
+        }
 
         public static function getAllHotel() {
             try {
@@ -118,6 +144,75 @@
                     $results[] = $objeto;
                 }
 
+                return $results;
+            } catch(Exception $e) {
+                throw new Exception($e->getMessage());
+            }
+        }
+
+        public static function getAllUsers() {
+            try {
+                $PDO = connectDB::active();
+                $sql = "SELECT * FROM usuario";
+                $stmt = $PDO->prepare($sql);
+                $stmt->execute();
+
+                $results = array();
+
+                while($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+                    $objeto = new Usuario();
+
+                    $objeto->setId($row->id);
+                    $objeto->setNome($row->nome);
+                    $objeto->setCPF($row->cpf);
+                    $objeto->setCelular($row->celular);
+                    $objeto->setEmail($row->email);
+                    $objeto->setSenha($row->senha);
+                    $objeto->setPerfil($row->perfil);
+                    $objeto->setEndereco_cep($row->endereco_cep);
+                    $objeto->setEndereco_numero($row->endereco_numero);
+                    $objeto->setEndereco_logradouro($row->endereco_logradouro);
+                    $objeto->setEndereco_bairro($row->endereco_bairro);
+                    $objeto->setEndereco_cidade($row->endereco_cidade);
+                    $objeto->setEndereco_estado($row->endereco_estado);
+                    $objeto->setEndereco_pais($row->endereco_pais);
+                    $objeto->setData_cadatro($row->data_cadastro);
+
+                    $results[] = $objeto;
+                }
+
+                return $results;
+            } catch(Exception $e) {
+                throw new Exception($e->getMessage());
+            }
+        }
+
+        public static function getReservas() {
+            try {
+                $PDO = connectDB::active();
+                $sql = "SELECT r.*, q.numero, u.nome as NomeUser, h.nome as NomeHotel FROM reserva r
+                            INNER JOIN quarto q ON q.id - r.idquarto
+                                INNER JOIN hotel h ON q.idhotel = h.id
+                                    INNER JOIN usuario u ON r.idusuario = u.id
+                                        GROUP BY r.idusuario";
+                $stmt = $PDO->prepare($sql);
+                $stmt->execute();
+
+                $results = array();
+                while($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+                    $objeto = new Reserva();
+
+                    $objeto->setId($row->id);
+                    $objeto->setNomeuser($row->NomeUser);
+                    $objeto->setNomehotel($row->NomeHotel);
+                    $objeto->setIdquarto($row->idquarto);
+                    $objeto->setIduser($row->idusuario);
+                    $objeto->setNumero($row->numero);
+                    $objeto->setStatus($row->status);
+                    $objeto->setData_reserva($row->data_reserva);
+
+                    $results[] = $objeto;
+                }
                 return $results;
             } catch(Exception $e) {
                 throw new Exception($e->getMessage());

@@ -13,7 +13,7 @@
             foreach($operator as $op) {
                 $data[] = [
                     "nome" => $op->getNome(),
-                    "cnpj" => $op->getCNPJ(),
+                    "cnpj" => $op->getCNPJmask(),
                     "data_cadastro" => $op->getData_cadatro()
                 ];
             }

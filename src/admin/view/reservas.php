@@ -87,92 +87,7 @@
                             <h2>Reservas</h2>
                         </div>
                         <div>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Hotél</th>
-                                        <th>Número</th>
-                                        <th>Descrição</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Rosemary Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rosaimeé Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Teófilo Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Júnior Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Aruna Bentes</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Carlos Fabian Jr</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>João Carlos</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Marta Silva</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Maria Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Carlos Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lucas Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rafael Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Filipe Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Marcos Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mario Souza</td>
-                                        <td>123.456.789-90</td>
-                                        <td>01/05/2023</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <table id="table-reservas"></table>
                         </div>
                     </div>
                 </div>
@@ -180,6 +95,6 @@
         </aside>
     </div>
 
-    <script src="../../components/js/admin_painel.js"></script>
+    <script src="../../components/js/admin/reservas.js"></script>
 </body>
 </html>
